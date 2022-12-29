@@ -35,7 +35,15 @@ public class Main {
                 case 2:
                     continue loof;
                 case 3:
-                    continue loof;
+                    int del = deleteList.deleteMusic();
+                    if(del > musicList.size()) {
+                        System.out.println("선택한 신청곡 번호가 존재하지 않습니다.");
+                        continue loof;
+                    } else {
+                        musicList.remove(del - 1);
+                        System.out.println("신청곡이 삭제되었습니다.");
+                        continue loof;
+                    }
                 case 0:
                     break loof;
                 default:
@@ -78,6 +86,11 @@ class UpdateList {
 }
 
 class DeleteList {
+    Scanner sc = new Scanner(System.in);
 
+    public int deleteMusic() {
+        System.out.print("삭제할 신청곡 번호를 입력해주세요 : ");
+        return sc.nextInt();
+    }
 }
 
