@@ -10,6 +10,7 @@ public class Main {
         DeleteList deleteList = new DeleteList();
 
         List<String> musicList = new ArrayList<>();
+        Scanner sc = new Scanner(System.in);
         int optionNum;
 
         loof: while(true) {
@@ -33,6 +34,15 @@ public class Main {
                     System.out.println("신청곡이 등록되었습니다.");
                     continue loof;
                 case 2:
+                    int update = updateList.updateMusic();
+                    if(update > musicList.size()) {
+                        System.out.println("선택한 신청곡 번호가 존재하지 않습니다.");
+                        continue loof;
+                    } else {
+                        System.out.println("변경할 신청곡을 입력해주세요 : ");
+                        musicList.set(update - 1, sc.nextLine());
+                        System.out.println("신청곡이 변경되었습니다.");
+                    }
                     continue loof;
                 case 3:
                     int del = deleteList.deleteMusic();
@@ -82,7 +92,12 @@ class InsertList {
 }
 
 class UpdateList {
+    Scanner sc = new Scanner(System.in);
 
+    public int updateMusic() {
+        System.out.println("수정할 신청곡 번호를 입력해주세요.");
+        return sc.nextInt();
+    }
 }
 
 class DeleteList {
