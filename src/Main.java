@@ -4,17 +4,17 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Option option = new Option();
-        InsertList insertList = new InsertList();
-        UpdateList updateList = new UpdateList();
-        DeleteList deleteList = new DeleteList();
+        ChooseMenu option = new ChooseMenu();
+        AddMusic insertList = new AddMusic();
+        UpdateMusic updateList = new UpdateMusic();
+        DeleteMusic deleteList = new DeleteMusic();
 
         List<String> musicList = new ArrayList<>();
         Scanner sc = new Scanner(System.in);
         int optionNum;
 
         loof: while(true) {
-            System.out.println("--------------Song Request--------------");
+            System.out.println("-".repeat(9) + "Song Request" + "-".repeat(9));
             if(musicList.size() == 0) {
                 System.out.println("신청곡이 없습니다.");
             } else {
@@ -24,7 +24,7 @@ public class Main {
                     numbering++;
                 }
             }
-            System.out.println("----------------------------------------");
+            System.out.println("-".repeat(30));
 
             optionNum = option.selectOption();
             switch (optionNum) {
@@ -65,47 +65,3 @@ public class Main {
 
     }
 }
-
-class Option {
-    Scanner sc = new Scanner(System.in);
-
-    public int selectOption() {
-        System.out.println("----------------------------------------");
-        System.out.println("1. 신청곡 추가하기");
-        System.out.println("2. 신청곡 수정하기");
-        System.out.println("3. 신청곡 삭제하기");
-        System.out.println("0. 종료하기");
-        System.out.println("----------------------------------------");
-
-        System.out.print("실행할 번호를 입력해주세요 : ");
-        return sc.nextInt();
-    }
-}
-
-class InsertList {
-    Scanner sc = new Scanner(System.in);
-
-    public String insertMusic() {
-        System.out.print("신청곡을 입력해주세요 : ");
-        return sc.nextLine();
-    }
-}
-
-class UpdateList {
-    Scanner sc = new Scanner(System.in);
-
-    public int updateMusic() {
-        System.out.println("수정할 신청곡 번호를 입력해주세요.");
-        return sc.nextInt();
-    }
-}
-
-class DeleteList {
-    Scanner sc = new Scanner(System.in);
-
-    public int deleteMusic() {
-        System.out.print("삭제할 신청곡 번호를 입력해주세요 : ");
-        return sc.nextInt();
-    }
-}
-
